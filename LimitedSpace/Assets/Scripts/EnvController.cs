@@ -3,32 +3,72 @@ using UnityEngine;
 
 public class EnvController : MonoBehaviour
 {
+    private void Start()
+    {
+        _instances = new Queue<GameObject>(_maxObjectsCount);
+        _lastRandomZPos = _verSpawnRange.x;
+    }
+
     private void Update()
     {
         _timer -= Time.deltaTime;
         if (_timer < 0.0f)
         {
             CreateObject();
-            _timer = 0.5f;
+            _timer = _secUntilSpawn;
         }
     }
 
     private void CreateObject()
     {
-        float zPos = Random.Range(_verSpawnRange.x, _verSpawnRange.y);
+        if (_instances.Count > _maxObjectsCount)
+        {
+            Destroy(_instances.Dequeue());
+        }
 
+        float zPos = GetRandomZPos();
         int index = Random.Range(0, _envPrefabs.Count);
-        var envObject = Instantiate(_envPrefabs[index]);
+
+        var envObject = Instantiate(_envPrefabs[index], _objectsHolder);
         envObject.transform.position = new Vector3(
-            this.transform.position.x,
+            _spawnPos.position.x,
             envObject.transform.position.y,
             zPos
             );
+
+        _instances.Enqueue(envObject);
+    }
+
+    private float GetRandomZPos()
+    {
+        // Random float but not too close to prev.
+        float randomZPos;
+        for (int i = 0; i < 5; i++)
+        {
+            randomZPos = Random.Range(_verSpawnRange.x, _verSpawnRange.y);
+            if (Mathf.Abs(_lastRandomZPos - randomZPos) > _minDiffFromLastRandomZ)
+            {
+                continue;
+            }
+
+            _lastRandomZPos = randomZPos;
+            return randomZPos;
+        }
+
+        return Random.Range(_verSpawnRange.x, _verSpawnRange.y);
     }
 
 
     [SerializeField] private List<GameObject> _envPrefabs;
     [SerializeField] private Vector2 _verSpawnRange;
+    [SerializeField] private float _secUntilSpawn = 0.3f;
+    [SerializeField] private int _maxObjectsCount = 100;
+    [SerializeField]  private float _minDiffFromLastRandomZ = 5.0f;
 
-    private float _timer = 0.5f;
+    [SerializeField] private Transform _spawnPos;
+    [SerializeField] private Transform _objectsHolder;
+
+    private float _timer = 0.0f;
+    private float _lastRandomZPos;
+    private Queue<GameObject> _instances;
 }

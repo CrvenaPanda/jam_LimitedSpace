@@ -30,8 +30,7 @@ Transform:
   m_LocalPosition: {x: -0.08, y: 1.92, z: -2.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7366190563138275038}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 32.51, y: 0, z: 0}
@@ -45,7 +44,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.46293163, g: 0.8388874, b: 0.9716981, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -99,55 +98,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
---- !u!1 &920618514680098880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7366190563138275038}
-  - component: {fileID: 2745050617879444247}
-  m_Layer: 0
-  m_Name: Environment
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7366190563138275038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920618514680098880}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 78697246130811274}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2745050617879444247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920618514680098880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 920fab5333c91be45bdd00441c17ad40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _envPrefabs:
-  - {fileID: 3930295661592838226, guid: bbe5d337309d9884abf77d7a71d25852, type: 3}
-  - {fileID: 4213418441701484925, guid: 811c4ff9337b5df46a7bb9772d801f76, type: 3}
-  - {fileID: 2975578968432745862, guid: 7b395a2affd1a464da6af66501fa5c4e, type: 3}
-  - {fileID: 8148811301023980662, guid: 0b6e9cb297b202a498ff35b6ca650a01, type: 3}
-  - {fileID: 8099574222552676593, guid: 3c4fbaec499ee3e4e94f7eae1dbf6626, type: 3}
-  - {fileID: 6656912737854630953, guid: 0e2233417e04dd94ca8e307b805dd3c7, type: 3}
-  _verSpawnRange: {x: 1.8, y: 8}
