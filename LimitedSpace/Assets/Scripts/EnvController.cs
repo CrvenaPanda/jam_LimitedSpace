@@ -36,7 +36,13 @@ public class EnvController : MonoBehaviour
             zPos
             );
 
+        envObject.transform.eulerAngles =  Vector3.up * GetRandomRotation();
         _instances.Enqueue(envObject);
+    }
+
+    private float GetRandomRotation()
+    {
+        return Random.Range(_randomRotationRange.x, _randomRotationRange.y);
     }
 
     private float GetRandomZPos()
@@ -63,7 +69,8 @@ public class EnvController : MonoBehaviour
     [SerializeField] private Vector2 _verSpawnRange;
     [SerializeField] private float _secUntilSpawn = 0.3f;
     [SerializeField] private int _maxObjectsCount = 100;
-    [SerializeField]  private float _minDiffFromLastRandomZ = 5.0f;
+    [SerializeField] private float _minDiffFromLastRandomZ = 5.0f;
+    [SerializeField] private Vector2 _randomRotationRange = new Vector2(-25.0f, 10.0f);
 
     [SerializeField] private Transform _spawnPos;
     [SerializeField] private Transform _objectsHolder;
