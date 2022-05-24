@@ -4,7 +4,7 @@ public class CameraController : MonoBehaviour
 {
     private void Start()
     {
-        _offsetFromTarget =  _target.position + this.transform.position;
+        _offsetFromTarget = this.transform.position - _target.position;
     }
 
     private void Update()

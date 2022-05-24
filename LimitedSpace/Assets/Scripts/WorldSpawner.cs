@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundController : MonoBehaviour
+public class WorldSpawner : MonoBehaviour
 {
     private void Start()
     {
-        _nextPointX = _groundLenght;
+        _nextPointX = -_groundLenght;
         _instances = new Queue<GameObject>(_maxInstances);
     }
 
     private void Update()
     {
-        if (_camera.position.x > (_nextPointX - _groundLenght))
+        if (_world.GetCameraTransform().position.x > (_nextPointX - _groundLenght))
         {
             SpawnGround();
             _nextPointX += _groundLenght;
@@ -20,7 +20,7 @@ public class GroundController : MonoBehaviour
 
     private void SpawnGround()
     {
-        var instance = Instantiate(_groundHolder, this.transform);
+        var instance = Instantiate(_prefab, this.transform);
         instance.transform.position = new Vector3(
             _nextPointX,
             instance.transform.position.y,
@@ -39,8 +39,9 @@ public class GroundController : MonoBehaviour
         }
     }
 
-    [SerializeField] private Transform _camera;
-    [SerializeField] private GameObject _groundHolder;
+
+    [SerializeField] private WorldController _world;
+    [SerializeField] private GameObject _prefab;
 
     [SerializeField] private int _maxInstances = 3;
     [SerializeField] private float _groundLenght;
