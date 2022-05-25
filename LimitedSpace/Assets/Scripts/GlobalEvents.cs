@@ -4,6 +4,7 @@ public class GlobalEvents
 {
     public static event Action OnStart;
     public static event Action OnUpdateScoreText;
+    public static event Action OnGameOver;
 
     public static void Start()
     {
@@ -13,5 +14,10 @@ public class GlobalEvents
     public static void UpdateScoreText()
     {
         OnUpdateScoreText?.Invoke();
+    }
+
+    public static void GameOver()
+    {
+        OnGameOver?.Invoke();
     }
 }

@@ -31,12 +31,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Finish")
+        if (collision.gameObject.tag == "Finish" && _view.activeSelf)
         {
             GlobalData.score++;
             GlobalEvents.UpdateScoreText();
             Destroy(collision.gameObject);
+            return;
         }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            // TODO: do some puff effect
+            _view.SetActive(false);
+            GlobalEvents.GameOver();
+        }
+
     }
 
     private void UpdateDesiredZPos()

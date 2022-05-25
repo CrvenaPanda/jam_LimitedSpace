@@ -25,6 +25,7 @@ public class UI : MonoBehaviour
     {
         CreateGame();
         GlobalEvents.OnUpdateScoreText += OnUpdateScore;
+        GlobalEvents.OnGameOver += OnGameOver;
     }
 
     private void CreateGame()
@@ -40,6 +41,11 @@ public class UI : MonoBehaviour
     private void OnUpdateScore()
     {
         _scoreText.text = "Score: " + GlobalData.score;
+    }
+
+    private void OnGameOver()
+    {
+        _mainMenu.SetActive(true);
     }
 
     [SerializeField] private GameObject _gamePrefab;
