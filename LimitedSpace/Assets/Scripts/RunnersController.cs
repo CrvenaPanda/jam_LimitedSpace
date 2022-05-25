@@ -55,6 +55,8 @@ public class RunnersController : MonoBehaviour
         var runnerInstance = Instantiate(_runnerPrefab, this.transform);
         runnerInstance.transform.position = pos;
 
+        var scoreDetector = Instantiate(_scoreDetectorPrefab, runnerInstance.transform);
+
         _runners.Enqueue(runnerInstance);
     }
 
@@ -66,6 +68,8 @@ public class RunnersController : MonoBehaviour
     [SerializeField] private float _firstSpawnPos = 10.0f;
 
     [SerializeField] private int _maxRunners = 12;
+
+    [SerializeField] private GameObject _scoreDetectorPrefab;
 
     private Queue<GameObject> _runners;
 

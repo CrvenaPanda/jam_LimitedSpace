@@ -13,4 +13,6 @@ public static class GlobalData
         new int[]{0, 1, 1},
         new int[]{1, 0, 1}
     };
+
+    public static int score = 0;
 }

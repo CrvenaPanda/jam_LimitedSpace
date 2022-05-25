@@ -29,6 +29,16 @@ public class PlayerController : MonoBehaviour
         Run(_runSpeed * Time.deltaTime);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Finish")
+        {
+            GlobalData.score++;
+            GlobalEvents.UpdateScoreText();
+            Destroy(collision.gameObject);
+        }
+    }
+
     private void UpdateDesiredZPos()
     {
         _desiredZPos = GlobalData.zTrackPos[_trackIndex];
