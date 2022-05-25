@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
         _scoreText.gameObject.SetActive(true);
         GlobalData.score = 0;
         GlobalEvents.UpdateScoreText();
+        Cursor.visible = false;
 
         _mainMenu.SetActive(false);
         GlobalEvents.Start();
@@ -46,6 +47,7 @@ public class UI : MonoBehaviour
     private void OnGameOver()
     {
         _mainMenu.SetActive(true);
+        Cursor.visible = true;
     }
 
     [SerializeField] private GameObject _gamePrefab;

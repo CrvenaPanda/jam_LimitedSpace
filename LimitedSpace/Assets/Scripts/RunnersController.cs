@@ -41,6 +41,7 @@ public class RunnersController : MonoBehaviour
             formationIndex = Random.Range(0, GlobalData.racersFormations.Count);
         }
 
+        _prevFormationIndex = formationIndex;
         return GlobalData.racersFormations[formationIndex];
     }
 
