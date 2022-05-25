@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private void OnEnable()
+    {
+        GlobalEvents.OnStart += OnPlay;
+    }
+
+    private void OnDisable()
+    {
+        GlobalEvents.OnStart -= OnPlay;
+    }
+
     private void Start()
     {
         UpdateDesiredZPos();
@@ -9,16 +19,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        DetectVerticalMoving();
-        MoveVertical();
-
-        // TODO: Remove
-        if (IsSprinting())
+        if (_view.activeSelf)
         {
-            Run(_sprintSpeed * Time.deltaTime);
-            return;
+            DetectVerticalMoving();
         }
 
+        
+        MoveVertical();
         Run(_runSpeed * Time.deltaTime);
     }
 
@@ -74,6 +81,11 @@ public class PlayerController : MonoBehaviour
         this.transform.position += Vector3.forward * _runSpeed * direction * Time.deltaTime;
     }
 
+    private void OnPlay()
+    {
+        _view.SetActive(true);
+    }
+
     bool IsEqual(float a, float b, float epsilon)
     {
         if (a >= b - epsilon && a <= b + epsilon)
@@ -87,6 +99,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _runSpeed = 10f;
     [SerializeField] private float _sprintSpeed = 15f;
     [SerializeField] private float _upDownSpeed = 7.5f;
+
+    [SerializeField] private GameObject _view;
 
     private int _trackIndex = 1;
     private float _desiredZPos;

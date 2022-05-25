@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: fb137c236fd544c429d1f53be7e71ed9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Fresh Fruit
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 439db2bd1d9ff23418919885f931f29d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
