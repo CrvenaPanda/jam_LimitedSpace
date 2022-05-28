@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void MoveVertical()
     {
-        if (IsEqual(this.transform.position.z, _desiredZPos, 0.02f))
+        if (IsEqual(this.transform.position.z, _desiredZPos, 0.1f))
         {
             return;
         }
